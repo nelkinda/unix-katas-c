@@ -1,3 +1,5 @@
+binary:=$(notdir $(abspath .))
+
 .PHONY: all
 ## Builds and tests the program.
 all: test

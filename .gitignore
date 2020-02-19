@@ -1,14 +1,13 @@
 # Binaries
-false
-true
+false/false
+true/true
 
 # Make
 .makehelp
 .help.mk
 
 # Tests
-test-false
-test-true
+*/test
 tmp/
 
 # Vim
