@@ -1,0 +1,13 @@
+# Binaries
+false
+true
+
+# Make
+
+# Tests
+test-false
+test-true
+tmp/
+
+# Vim
+*.swp
