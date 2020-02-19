@@ -1,29 +1,18 @@
-binaries:=true false
-tests:=$(addprefix test-,$(binaries))
+programs:=$(patsubst %/,%,$(wildcard */))
 
 .PHONY: all
 ## Builds and tests all programs.
-all: $(tests)
+all: $(addsuffix -all,$(programs))
 
-test-true: true | tmp/
-	./true >tmp/$@.stdout 2>tmp/$@.stderr
-	diff /dev/null tmp/$@.stdout
-	diff /dev/null tmp/$@.stderr
-	touch $@
-
-test-false: false | tmp/
-	! ./false >tmp/$@.stdout 2>tmp/$@.stderr
-	diff /dev/null tmp/$@.stdout
-	diff /dev/null tmp/$@.stderr
-	touch $@
-
-tmp/:
-	mkdir -p $@
+%-all:
+	$(MAKE) -C $*
 
 .PHONY: clean
 ## Removes all auto-generated files.
-clean::
-	$(RM) -r $(binaries) $(tests) tmp/
+clean:: $(addsuffix -clean,$(programs))
+
+%-clean:
+	$(MAKE) -C $* clean
 
 -include .makehelp/include/makehelp/Help.mk
 
