@@ -1,4 +1,5 @@
 # Binaries
+echo/echo
 false/false
 true/true
 
@@ -7,8 +8,8 @@ true/true
 .help.mk
 
 # Tests
-*/test
-tmp/
+actual/
+test/
 
 # Vim
 *.swp

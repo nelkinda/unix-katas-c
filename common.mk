@@ -1,17 +1,21 @@
 binary:=$(notdir $(abspath .))
+SHELL:=/bin/bash
+
+CFLAGS:=-W -Wall -pedantic
 
 .PHONY: all
 ## Builds and tests the program.
 all: test
 
-test: $(binary) | tmp/
+.PHONY: test
+test: $(binary) | test/
 
-tmp/:
+%/:
 	mkdir -p $@
 
 .PHONY: clean
 clean::
-	$(RM) -r $(binary) test tmp/
+	$(RM) -r $(binary) test/ actual*
 
 -include ../.makehelp/include/makehelp/Help.mk
 
