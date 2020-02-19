@@ -3,6 +3,8 @@ false
 true
 
 # Make
+.makehelp
+.help.mk
 
 # Tests
 test-false
